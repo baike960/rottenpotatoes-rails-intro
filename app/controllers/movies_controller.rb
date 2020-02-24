@@ -19,8 +19,8 @@ class MoviesController < ApplicationController
     end
 
     @ratings = params[:ratings] 
-    puts "ratings are: "
-    puts @ratings
+    # puts "ratings are: "
+    # puts @ratings
     if params[:ratings].nil?
       if session[:ratings].nil?
         @ratings = all_ratings
@@ -30,7 +30,11 @@ class MoviesController < ApplicationController
     end
     session[:sort] = @sort
     session[:ratings] = @ratings
-    @movies = Movie.where( { rating: @ratings.keys } ).order(@sort)
+    puts "ratings keys are: "
+    # for rating in @ratings
+    #   puts rating
+    # end
+    @movies = Movie.where( { rating: @all_ratings.keys } ).order(@sort)
     
      if params[:sort] != session[:sort] or params[:ratings] != session[:ratings]
       flash.keep
