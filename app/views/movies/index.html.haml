@@ -6,7 +6,7 @@
     = rating
     / = puts "in haml"
     / = puts @ratings.has_key?(rating)
-    = check_box_tag "ratings[#{rating}]" ,1, @ratings.nil? ? false : @ratings.has_key?(rating)
+    = check_box_tag "ratings[#{rating}]" ,1, @ratings.nil? ? false : @ratings.include?(rating)
   = submit_tag 'Refresh'
 
 %table#movies.table.table-striped.col-md-12
