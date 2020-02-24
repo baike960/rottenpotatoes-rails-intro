@@ -32,7 +32,11 @@ class MoviesController < ApplicationController
     session[:ratings] = @ratings
     # puts "ratings have the type: "
     # puts @ratings.keys.class
-    @ratings_keys = @ratings.keys
+    # @ratings_keys = @ratings.keys
+    @ratings_keys = Array.new
+    @ratings.each do |key, value|
+      @ratings_keys.push(key)
+    end
     @movies = Movie.where( { rating: @ratings_keys } ).order(@sort)
     
      if params[:sort] != session[:sort] or params[:ratings] != session[:ratings]
