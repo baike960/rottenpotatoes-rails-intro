@@ -18,9 +18,7 @@ class MoviesController < ApplicationController
       @sort = session[:sort]
     end
 
-    @ratings = params[:ratings] 
-    # puts "ratings are: "
-    # puts @ratings
+    @ratings = params[:ratings]
     if params[:ratings].nil?
       if session[:ratings].nil?
         @ratings = @all_ratings
@@ -30,9 +28,7 @@ class MoviesController < ApplicationController
     end
     session[:sort] = @sort
     session[:ratings] = @ratings
-    # puts "ratings have the type: "
-    # puts @ratings.keys.class
-    # @ratings_keys = @ratings.keys
+
     @ratings_keys = Array.new
     @ratings.each do |key, value|
       @ratings_keys.push(key)
