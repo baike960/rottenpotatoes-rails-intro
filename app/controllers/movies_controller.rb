@@ -23,7 +23,7 @@ class MoviesController < ApplicationController
     # puts @ratings
     if params[:ratings].nil?
       if session[:ratings].nil?
-        @ratings = all_ratings
+        @ratings = @all_ratings
       else
         @ratings = session[:ratings]
       end
