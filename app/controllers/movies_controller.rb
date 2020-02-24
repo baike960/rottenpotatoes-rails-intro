@@ -30,11 +30,10 @@ class MoviesController < ApplicationController
     end
     session[:sort] = @sort
     session[:ratings] = @ratings
-    puts "ratings keys are: "
-    # for rating in @ratings
-    #   puts rating
-    # end
-    @movies = Movie.where( { rating: @ratings.keys } ).order(@sort)
+    # puts "ratings have the type: "
+    # puts @ratings.keys.class
+    @ratings_keys = @ratings.keys
+    @movies = Movie.where( { rating: @ratings_keys } ).order(@sort)
     
      if params[:sort] != session[:sort] or params[:ratings] != session[:ratings]
       flash.keep
