@@ -19,6 +19,8 @@ class MoviesController < ApplicationController
     end
 
     @ratings = params[:ratings] 
+    puts "ratings are: "
+    puts @ratings
     if params[:ratings].nil?
       if session[:ratings].nil?
         @ratings = all_ratings
